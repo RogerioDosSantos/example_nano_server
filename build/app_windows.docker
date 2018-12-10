@@ -1,0 +1,20 @@
+# Builder Image
+
+FROM rogersantos/nano_server_example:os_windows
+
+# ARG flavor=Debug
+ARG flavor=Release
+ARG product_uri=0.0.1@roger/dev
+
+LABEL maintainer="Roger Santos (https://github.com/RogerioDosSantos)"
+LABEL description="Example of nano server application"
+LABEL product_uri="${product_uri}"
+LABEL flavor="${flavor}"
+
+WORKDIR /workspace
+
+# RUN echo %flavor%
+# RUN mkdir app
+COPY ./stage/windows_x64/${flavor}/ /workspace/app/
+
+ENTRYPOINT ["powershell"]

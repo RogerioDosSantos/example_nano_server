@@ -1,0 +1,14 @@
+# Operational System and programs
+
+FROM microsoft/windowsservercore:1803 as build-staging
+
+# Install Visual C++ 2017 (x64) redistributable
+ADD https://aka.ms/vs/15/release/VC_redist.x64.exe /workspace/dependencies/vc_redist.x64.exe
+RUN c:\workspace\dependencies\vc_redist.x64.exe /quiet
+
+FROM microsoft/nanoserver
+LABEL maintainer="Roger Santos (https://github.com/RogerioDosSantos)"
+
+# Install Visual C++ 2017 (x64) redistributable
+COPY --from=build-staging C:\\Windows\\SYSTEM32\\VCRUNTIME140.dll C:\\Windows\\SYSTEM32\\VCRUNTIME140.dll
+
