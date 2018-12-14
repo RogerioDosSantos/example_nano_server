@@ -72,8 +72,6 @@ if %ERRORLEVEL% GTR 8 (
     echo Warning! Unable to stage UCRT dll, debug binaries will not run in the container.
 )
 
-
-
 echo Building container...
 set dockerBuildCmd=docker build ^
     --no-cache ^
@@ -111,8 +109,8 @@ echo   Nano Server Container started with id: %CONID:~0,12%
 echo.
 
 :: cleanup staged files
-if exist %LOCAL_BIN_STAGING_DIR% (
-    rd /Q /S %LOCAL_BIN_STAGING_DIR%
+if exist %local_bin_staging_dir% (
+    rd /q /s %local_bin_staging_dir%
 )
 
 goto :EOF
