@@ -5,3 +5,4 @@ src/.vs/
 src/x64/
 src/nano_server_example.vcxproj.user
 build/.vs/
+tags
